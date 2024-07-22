@@ -1,7 +1,7 @@
-import { Propane, Search } from '@mui/icons-material';
-import { Dialog, DialogContent, DialogTitle, Paper, Slide, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import ProductPickerList from '../../product-picker-list/ProductPickerList';
+import { Search } from '@mui/icons-material';
+import { Dialog, DialogContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import React, { useState } from 'react'
+import ProductPickerList from '../product-picker-list/ProductPickerList';
 
 
 const styles = {
@@ -67,11 +67,10 @@ const styles = {
     }
 }
 
-const ProductPicker = (props) => {
+const ProductPickerDialog = (props) => {
 
     const [selectedList, setSelectedList] = useState([...props.productList])
     const [presentRow, setPresentRow] = useState(-1)
-    const [search, setSearch] = useState('');
 
     const onCheckProduct = checked => {
         let dummy = []
@@ -145,13 +144,13 @@ const ProductPicker = (props) => {
                                 <TableCell>
                                     <div style={styles.searchContainer}>
                                         <Search style={styles.searchIcon} />
-                                        <input value={search} onChange={(e) => setSearch(e.target.value)} style={styles.searchInput} type='search' />
+                                        <input value={props.search} onChange={e => props.onChangeSearch(e.target.value)} style={styles.searchInput} type='search' />
                                     </div>
                                 </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {props.pickerList.filter(e => e.title.toLowerCase().includes(search.toLowerCase())).map((e, i) => (
+                            {props.pickerList.filter(e => e.title.toLowerCase().includes(props.search.toLowerCase())).map((e, i) => (
                                 <ProductPickerList
                                     key={i}
                                     product={e}
@@ -175,4 +174,4 @@ const ProductPicker = (props) => {
     )
 }
 
-export default ProductPicker
+export default ProductPickerDialog

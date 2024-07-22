@@ -2,7 +2,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
 import React, { useEffect, useState } from "react";
 import { getProductList } from "../../services/ProductService";
 import ProductsList from "../product-list/products-list/ProductsList";
-import ProductPicker from "../product-picker/product-picker-dialog/ProductPickerDialog";
+import ProductPickerDialog from "../product-picker/product-picker-dialog/ProductPickerDialog";
 
 const styles = {
     tableContainer : {
@@ -53,15 +53,21 @@ const Home = () => {
     const [dataLimit, setDataLimit] = useState([0, 10])
     const [preDataLength, setPreDataLength] = useState(10)
     const [dialogOpen, setDialogOpen] = useState(false)
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         if (preDataLength < 10) {
             return
         }
-        const data = getProductList(dataLimit);
+        const data = getProductList(dataLimit, search);
+        console.log('getting data from api is ===', data)
         setPickerList(pre => ([...pre, ...data]))
         setPreDataLength(data.length)
     }, [dataLimit])
+
+    const onChangeSearch = value => {
+        setSearch(value)
+    }
 
     const trackScrolling = (e) => {
         const {scrollHeight, scrollTop, clientHeight} = e.target
@@ -195,7 +201,7 @@ const Home = () => {
             </TableContainer>
             <button onClick={onAddEmptyProduct} style={styles.addButton}>Add Product</button>
             {dialogOpen && 
-                <ProductPicker
+                <ProductPickerDialog
                 handleDialogToggle={handleDialogToggle}
                 dialogOpen={dialogOpen}
                 pickerList={pickerList}
@@ -203,6 +209,8 @@ const Home = () => {
                 productList={productList}
                 currentRow={currentRow}
                 onAddSelectedToProductList={onAddSelectedToProductList}
+                search={search}
+                onChangeSearch={onChangeSearch}
              />
             }
         </div>
@@ -211,7 +219,7 @@ const Home = () => {
 
 export default Home;
 
-
+// This is the data format of the product list.
 const selected = [
     {
         id: 'productId',

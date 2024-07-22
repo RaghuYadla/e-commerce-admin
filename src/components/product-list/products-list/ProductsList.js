@@ -1,7 +1,7 @@
 import { CloseOutlined, DragIndicator, EditOutlined, KeyboardArrowDown, KeyboardArrowUp } from '@mui/icons-material'
 import { TableCell, TableRow } from '@mui/material'
 import React from 'react'
-import ProductVariantList from '../../product-variant-list/ProductVariantList'
+import ProductVariantList from '../product-variant-list/ProductVariantList'
 
 const styles = {
     dragIcon: {
@@ -19,7 +19,7 @@ const styles = {
         padding: '5px 5px 5px 5px'
     },
     editBtn: {
-        cursor: 'pointer',
+        cursor: 'pointer'
     },
     addDiscount: {
         backgroundColor: 'green',

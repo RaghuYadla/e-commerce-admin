@@ -1,30 +1,26 @@
+import axios from 'axios';
 
+export const getProductList = async (dataLimit, search) => {
+    const page = dataLimit[0];
+    const limit = dataLimit[1] - dataLimit[0];
 
-export const getProductList = (dataLimit) => {
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'x-api-key': '72njgfa948d9aS7gs5',
-    //         "Access-Control-Allow-Origin": "http://localhost:3000",
-    //         'Content-Type': 'application/json'
-    //     }
-    // }
+    const url = `http://stageapi.monkcommerce.app/task/products/search?search=${search}&page=${page}&limit=${limit}`;
 
-    // const url = 'http://stageapi.monkcommerce.app/task/products/search?search=df&page=2&limit=3';
+    try {
+        const response = await axios.get(url, {
+            mode: 'no-cors',
+            headers: {
+                'x-api-key': '72njgfa948d9aS7gs5',
+                'Content-Type': 'application/json',
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error;
+    }
+};
 
-    // try {
-    //     const response = await fetch(url, options);
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //     }
-    //     const data = await response.json();
-    //     console.log(data);
-    // } catch (error) {
-    //     console.error('Error fetching data:', error);
-    // }
-    const response = data.slice(dataLimit[0], dataLimit[1])
-    return response
-}
 
 const data = [
     {

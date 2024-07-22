@@ -35,7 +35,7 @@ const VariantPickerList = props => {
                         {e.title}
                     </TableCell>
                     <TableCell style={styles.variantQuantity}>
-                        {e.inventory_quantity < 1 || e.inventory_quantity == undefined ? 'Not' : e.inventory_quantity} available
+                        {e.inventory_quantity < 1 || e.inventory_quantity === undefined ? 'Not' : e.inventory_quantity} available
                     </TableCell>
                     <TableCell style={styles.variantPrice}>
                         $ {e.price}
