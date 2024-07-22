@@ -1,8 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getProductList } from "../../services/ProductService";
-import ProductsList from "../products-list/ProductsList";
-import ProductPicker from "../product-picker/ProductPicker";
+import ProductsList from "../product-list/products-list/ProductsList";
+import ProductPicker from "../product-picker/product-picker-dialog/ProductPickerDialog";
 
 const styles = {
     tableContainer : {

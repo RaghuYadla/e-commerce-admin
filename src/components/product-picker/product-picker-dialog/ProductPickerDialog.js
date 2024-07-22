@@ -1,7 +1,7 @@
 import { Propane, Search } from '@mui/icons-material';
 import { Dialog, DialogContent, DialogTitle, Paper, Slide, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import ProductPickerList from '../product-picker-list/ProductPickerList';
+import ProductPickerList from '../../product-picker-list/ProductPickerList';
 
 
 const styles = {
