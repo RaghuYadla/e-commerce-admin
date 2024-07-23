@@ -1,24 +1,27 @@
 import axios from 'axios';
 
-export const getProductList = async (dataLimit, search) => {
-    const page = dataLimit[0];
-    const limit = dataLimit[1] - dataLimit[0];
+export const getProductList = (dataLimit, search) => {
+    // const page = dataLimit[0];
+    // const limit = dataLimit[1] - dataLimit[0];
 
-    const url = `http://stageapi.monkcommerce.app/task/products/search?search=${search}&page=${page}&limit=${limit}`;
+    // const url = `http://stageapi.monkcommerce.app/task/products/search?search=${search}&page=${page}&limit=${limit}`;
 
-    try {
-        const response = await axios.get(url, {
-            mode: 'no-cors',
-            headers: {
-                'x-api-key': '72njgfa948d9aS7gs5',
-                'Content-Type': 'application/json',
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
+    // try {
+    //     const response = await axios.get(url, {
+    //         mode: 'no-cors',
+    //         headers: {
+    //             'x-api-key': '72njgfa948d9aS7gs5',
+    //             'Content-Type': 'application/json',
+    //         },
+    //     });
+    //     return response.data;
+    // } catch (error) {
+    //     console.error('Error fetching data:', error);
+    //     throw error;
+    // }
+    const filtered = data.slice(dataLimit[0], dataLimit[1])
+    console.log('filtered in the service is ===', filtered)
+    return filtered
 };
 
 
